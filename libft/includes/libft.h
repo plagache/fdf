@@ -93,5 +93,6 @@ void			ft_2lstdel(t_2list **alst, void (*del)(void *));
 void			ft_2lstdelnext(t_2list **alst, void (*del)(void *));
 void			ft_2lstdelone(t_2list **alst, void (*del)(void *));
 t_2list			*ft_2lstnew(void const *cntent, size_t cntent_size);
+int				ft_printf(const char *format, ...);
 
 #endif

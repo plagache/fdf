@@ -1,0 +1,39 @@
+NAME= fdf
+
+SRCS= main.c\
+
+
+OBJ= $(SRCS:.c=.o)
+
+LIBDIR= libft
+
+LIBA = $(LIBDIR)/libft.a
+LIBA += minilibx/libmlx.a
+
+CFLAGS= -Wall -Werror -Wextra
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	@make -s -C $(LIBDIR)
+	@gcc $(CFLAGS) -o $(NAME) $(OBJ) $(LIBA) -lXext -lX11
+	@echo "fdf build complete"
+
+%.o : %.c
+	@gcc -I $(LIBDIR) $(CFLAGS) -o $@ -c $<
+
+clean:
+		@rm -rf $(OBJ)
+		@echo "fdf objects cleaned"
+		@make clean -C $(LIBDIR)
+
+fclean:
+		@make fclean -s -C $(LIBDIR)
+		@rm -f $(NAME)
+		@rm -rf $(OBJ)
+		@echo "fdf objects cleaned"
+		@echo "fdf project cleaned"
+
+re: fclean all
+
+.PHONY: all clean fclean re

@@ -1,43 +1,56 @@
-#include "minilibx/mlx.h"
+#include "includes/fdf.h"
+#include "libft/includes/get_next_line.h"
+#include <stdio.h>
 
-int		main()
+void	dispay(char **board)
 {
-	void *p;
-	void *w;
-	void *img_ptr;
-	int		size_l;
-	int		bpp;
-	int 	endian;
-	int *img_data;
-	int		count_h;
-	int		count_w;
+	int c;
 
-
-	p = mlx_init();
-	count_h = -1;
-	w = mlx_new_window(p, 640, 480, "mateub");
-	img_ptr = mlx_new_image(p, 640, 480);
-	size_l = 3200;
-	bpp = 32;
-	endian = 0;
-	img_data = (int *)mlx_get_data_addr(img_ptr, &bpp, &size_l, &endian);
-
-	while (++count_h < 480)
+	c = 0;
+	while (board[c])
 	{
-		count_w = -1;
-		while (++count_w < 640)
-		{
-			if (count_w % 2)
-				/*
-				   formula : [current height * max width + current width] (as you can see below)
-				   */
-				img_data[count_h * 640 + count_w] = 0xFFFFFF;
-			else
-				img_data[count_h * 480 + count_w] = 0;
-		}
+		ft_printf("%s\n", board[c]);
 	}
+}
 
-	mlx_put_image_to_window(p, w, img_ptr, 640, 480);
-	mlx_loop(p);
+int		parsing(int fd, t_map map)
+{
+	int ret;
+	char **tmp;
+
+	while ((ret = get_next_line(fd, tmp)) > 0)
+	{
+
+	}
+	return (ret);
+}
+
+int	main(int ac, char **av)
+{
+	t_mlx	mlx;
+	t_map	map;
+
+	int		fd;
+	int		ret;
+
+	if (ac != 2)
+	{
+		ft_printf("usage : ./fdf path/to/map.fdf");
+		return (1);
+	}
+	fd = open(av[1], O_RDONLY);
+	if (fd < 0 || (ret = parsing(fd, map)) == -1)
+	{
+		close(fd);
+		ft_putendl("error");
+		return (1);
+	}
+	close(fd);
+	mlx.init = mlx_init();
+	mlx.window = mlx_new_window(mlx.init, WIN_WIDTH, WIN_HEIGHT, "ma teub");
+	mlx.img.img_ptr = mlx_new_image(mlx.init, WIN_WIDTH, WIN_HEIGHT);
+	mlx.img.img_data = mlx_get_data_addr(mlx.img.img_ptr, &mlx.img.bpp, &mlx.img.size_l, &mlx.img.endian);
+	mlx_put_image_to_window(mlx.init, mlx.window, mlx.img.img_ptr, 0, 0);
+	mlx_loop(mlx.init);
 	return (0);
 }
