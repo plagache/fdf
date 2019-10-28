@@ -2,7 +2,6 @@ NAME= fdf
 
 SRCS= main.c\
 
-
 OBJ= $(SRCS:.c=.o)
 
 LIBDIR= libft
