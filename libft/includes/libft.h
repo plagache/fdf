@@ -6,7 +6,7 @@
 /*   By: alagache <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/14 13:30:54 by alagache          #+#    #+#             */
-/*   Updated: 2019/05/23 14:25:02 by alagache         ###   ########.fr       */
+/*   Updated: 2019/10/28 14:50:36 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,6 @@ void			ft_2lstdelnext(t_2list **alst, void (*del)(void *));
 void			ft_2lstdelone(t_2list **alst, void (*del)(void *));
 t_2list			*ft_2lstnew(void const *cntent, size_t cntent_size);
 int				ft_printf(const char *format, ...);
+int				get_next_line(const int fd, char **line);
 
 #endif

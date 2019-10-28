@@ -5,6 +5,7 @@
 # include "../libft/includes/libft.h"
 # include <unistd.h>
 # include <fcntl.h>
+# include <stdlib.h>
 
 # define WIN_WIDTH 1024
 # define WIN_HEIGHT 768
@@ -23,20 +24,19 @@ typedef struct	s_map
 	int 	y;
 }				t_map;
 
-typedef struct	s_img
+typedef struct	s_mlx
 {
+	void	*init;
+	void	*window;
 	void	*img_ptr;
 	char	*img_data;
 	int		size_l;
 	int		endian;
 	int		bpp;
-}				t_img;
-
-typedef struct	s_mlx
-{
-	void	*init;
-	void	*window;
-	t_img	img;
 }				t_mlx;
+
+
+int		read_to_list(int fd, t_map *map);
+void	clean_map(t_map *map);
 
 #endif
