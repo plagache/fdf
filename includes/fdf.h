@@ -20,8 +20,7 @@
 typedef struct	s_map
 {
 	char 	**board;
-	int		x;
-	int 	y;
+	int		**tab;
 }				t_map;
 
 typedef struct	s_mlx
@@ -38,5 +37,7 @@ typedef struct	s_mlx
 
 int		read_to_list(int fd, t_map *map);
 void	clean_map(t_map *map);
+int		key_press(int keycode, void *param);
+int 	data_trans(t_map *map);
 
 #endif

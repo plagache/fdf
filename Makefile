@@ -2,6 +2,8 @@ NAME= fdf
 
 SRCS= main.c\
 	  parsing.c\
+	  key_press.c\
+	  data_man.c\
 
 OBJ= $(SRCS:.c=.o)
 
