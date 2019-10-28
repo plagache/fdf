@@ -8,7 +8,8 @@ OBJ= $(SRCS:.c=.o)
 LIBDIR= libft
 
 LIBA = $(LIBDIR)/libft.a
-LIBA += minilibx/libmlx.a
+#LIBA += minilibx/libmlx.a
+LIBA += minilibx_macos/libmlx.a
 
 CFLAGS= -Wall -Werror -Wextra
 
@@ -16,7 +17,8 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -s -C $(LIBDIR)
-	@gcc $(CFLAGS) -o $(NAME) $(OBJ) $(LIBA) -lXext -lX11
+	@#gcc $(CFLAGS) -o $(NAME) $(OBJ) $(LIBA) -lXext -lX11
+	@gcc $(CFLAGS) -o $(NAME) $(OBJ) $(LIBA) -framework OpenGL -framework AppKit
 	@echo "fdf build complete"
 
 %.o : %.c

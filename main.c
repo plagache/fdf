@@ -1,3 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alagache <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/28 12:10:07 by alagache          #+#    #+#             */
+/*   Updated: 2019/10/28 12:19:59 by alagache         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alagache <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/28 12:10:07 by alagache          #+#    #+#             */
+/*   Updated: 2019/10/28 12:10:07 by alagache         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "includes/fdf.h"
 #include "libft/includes/get_next_line.h"
 #include <stdio.h>
@@ -13,14 +37,15 @@ void	dispay(char **board)
 	}
 }
 
-int		parsing(int fd, t_map map)
+static int		parsing(int fd, t_map *map)
 {
 	int ret;
-	char **tmp;
+	char *tmp;
 
-	while ((ret = get_next_line(fd, tmp)) > 0)
+	(void)map;
+	while ((ret = get_next_line(fd, &tmp)) > 0)
 	{
-
+		free(tmp);
 	}
 	return (ret);
 }
@@ -29,17 +54,16 @@ int	main(int ac, char **av)
 {
 	t_mlx	mlx;
 	t_map	map;
-
 	int		fd;
 	int		ret;
 
 	if (ac != 2)
 	{
 		ft_printf("usage : ./fdf path/to/map.fdf");
-		return (1);
+		return (-1);
 	}
 	fd = open(av[1], O_RDONLY);
-	if (fd < 0 || (ret = parsing(fd, map)) == -1)
+	if (fd < 0 || (ret = parsing(fd, &map)) == -1)
 	{
 		close(fd);
 		ft_putendl("error");
