@@ -4,6 +4,7 @@ SRCS= main.c\
 	  parsing.c\
 	  key_press.c\
 	  data_man.c\
+	  tracer.c\
 
 OBJ= $(SRCS:.c=.o)
 

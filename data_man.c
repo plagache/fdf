@@ -6,7 +6,7 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 17:18:32 by plagache          #+#    #+#             */
-/*   Updated: 2019/10/29 13:06:21 by alagache         ###   ########.fr       */
+/*   Updated: 2019/10/29 14:16:46 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int		alloc_tab(t_map *map, t_point *pt)
 		pt->y++;
 	while (map->board[0][c])
 	{
+		if (c == 0 && map->board[0][c] == '-')
+			c++;
 		while (map->board[0][c] && ft_isdigit(map->board[0][c]) == 1)
 			c++;
 		pt->x++;
@@ -59,17 +61,22 @@ void	fill_tab(t_map *map, t_point *pt)
 {
 	int	x;
 	int	y;
+	int c;
 
 	y = 0;
 	while (y < pt->y)
 	{
-	x = 0;
+		x = 0;
+		c = 0;
 		while (x < pt->x)
 		{
 			(map->tab[y * pt->x + x]).x = x;
 			(map->tab[y * pt->x + x]).y = y;
-			(map->tab[y * pt->x + x]).z = atoi(map->board[y]);
-			//ft_printf("X=%i | Y=%i | Z=%i\n", (map->tab[y * pt->x + x]).x, (map->tab[y * pt->x + x]).y, (map->tab[y * pt->x + x]).z);
+			(map->tab[y * pt->x + x]).z = atoi(map->board[y] + c);
+			while (map->board[y][c] && (ft_isdigit(map->board[y][c]) == 1 || map->board[y][c] == '-'))
+				c++;
+			while (map->board[y][c] && ft_isdigit(map->board[y][c]) == 0 && map->board[y][c] != '-')
+				c++;
 			x++;
 		}
 		y++;
@@ -81,11 +88,12 @@ int 	data_trans(t_map *map)
 {
 	t_point	pt;
 
-	if (same_length(map) == -1)
-		return (-1);
+	//	if (same_length(map) == -1)
+	//		return (-1);
 	if (alloc_tab(map, &pt) == 0)
 		return (-1);
 	fill_tab(map, &pt);
-	free(map->tab);
+	map->x_max = pt.x;
+	map->y_max = pt.y;
 	return (0);
 }

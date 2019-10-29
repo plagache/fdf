@@ -4,11 +4,15 @@
 # include "../minilibx/mlx.h"
 # include "../libft/includes/libft.h"
 # include <unistd.h>
+# include <stdio.h>
 # include <fcntl.h>
 # include <stdlib.h>
+# include <math.h>
 
 # define WIN_WIDTH 1024
 # define WIN_HEIGHT 768
+# define IMG_WIDTH 1000
+# define IMG_HEIGHT 700
 # define ECHAP 53
 # define UP	126
 # define DOWN 125
@@ -28,6 +32,8 @@ typedef struct	s_map
 {
 	char	**board;
 	t_point	*tab;
+	int		x_max;
+	int		y_max;
 }				t_map;
 
 typedef struct	s_mlx
@@ -35,7 +41,7 @@ typedef struct	s_mlx
 	void	*init;
 	void	*window;
 	void	*img_ptr;
-	char	*img_data;
+	int		*img_data;
 	int		size_l;
 	int		endian;
 	int		bpp;
@@ -46,5 +52,6 @@ int		read_to_list(int fd, t_map *map);
 void	clean_board(t_map *map);
 int		key_press(int keycode, void *param);
 int 	data_trans(t_map *map);
+int		*draw(int *data, t_map *map);
 
 #endif

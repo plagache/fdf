@@ -6,7 +6,7 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 16:51:26 by plagache          #+#    #+#             */
-/*   Updated: 2019/10/29 12:13:38 by alagache         ###   ########.fr       */
+/*   Updated: 2019/10/29 15:46:45 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,14 @@ int	main(int ac, char **av)
 	}
 	close(fd);
 	mlx.init = mlx_init();
-	mlx.window = mlx_new_window(mlx.init, WIN_WIDTH, WIN_HEIGHT, "ma teub");
+	mlx.window = mlx_new_window(mlx.init, WIN_WIDTH, WIN_HEIGHT, "fdf");
 	clean_board(&map);
-	//mlx.img_ptr = mlx_new_image(mlx.init, WIN_WIDTH, WIN_HEIGHT);
-	//mlx.img_data = mlx_get_data_addr(mlx.img_ptr, &mlx.bpp, &mlx.size_l, &mlx.endian);
-	//mlx_put_image_to_window(mlx.init, mlx.window, mlx.img_ptr, 0, 0);
+	mlx.img_ptr = mlx_new_image(mlx.init, IMG_WIDTH, IMG_HEIGHT);
+	mlx.img_data = (int *)mlx_get_data_addr(mlx.img_ptr, &mlx.bpp, &mlx.size_l, &mlx.endian);
+	draw(mlx.img_data, &map);
+	mlx_put_image_to_window(mlx.init, mlx.window, mlx.img_ptr, 10, 10);
 	mlx_hook(mlx.window, 2, 0, &key_press, 0);
 	mlx_loop(mlx.init);
-	//mlx_destroy_image(mlx.init, mlx.img_ptr);
+	mlx_destroy_image(mlx.init, mlx.img_ptr);
 	return (0);
 }
