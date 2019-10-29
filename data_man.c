@@ -6,7 +6,7 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 17:18:32 by plagache          #+#    #+#             */
-/*   Updated: 2019/10/28 17:54:16 by plagache         ###   ########.fr       */
+/*   Updated: 2019/10/29 12:19:01 by alagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,27 @@
 #include <stdio.h>
 #include "minilibx_macos/mlx.h"
 
-int		calc_x_y(t_map *map)
+int		alloc_tab(t_map *map, t_point *pt)
 {
-	int x;
-	int y;
 	int	c;
 
-	y = 0;
-	x = 0;
+	pt->y = 0;
+	pt->x = 0;
 	c = 0;
-	while (map->board[y])
-		y++;
-	if (!(map->tab = (int**)malloc(sizeof(int*) * (y + 1))))
-		return (0);
-	map->tab[y] = NULL;
-	y = 0;
-	while (map->board[y][x])
+	while (map->board[pt->y])
+		pt->y++;
+	while (map->board[0][c])
 	{
-		while (map->board[y][x] && ft_isdigit(map->board[y][x]) == 1)
-			x++;
-		c++;
-		while (map->board[y][x] && ft_isdigit(map->board[y][x]) == 0)
-			x++;
+		while (map->board[0][c] && ft_isdigit(map->board[0][c]) == 1)
+			c++;
+		pt->x++;
+		while (map->board[0][c] && ft_isdigit(map->board[0][c]) == 0)
+			c++;
 	}
-	return (c);
+	if (!(map->tab = (t_point*)malloc(sizeof(t_point) * (pt->y * pt->x) + 1)))
+		return (0);
+	map->tab[pt->y * pt->x] = NULL;
+	return (1);
 }
 
 int		same_length(t_map *map)
@@ -58,8 +55,11 @@ int		same_length(t_map *map)
 
 int 	data_trans(t_map *map)
 {
+	t_point	pt;
+
 	if (same_length(map) == -1)
 		return (-1);
-	calc_x_y(map);
+	if (alloc_tab(map, &pt) == 0);
+		return (-1);
 	return (0);
 }

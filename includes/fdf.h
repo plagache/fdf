@@ -17,10 +17,17 @@
 # define ZOOM 69
 # define DEZOOM 78
 
+typedef struct	s_point
+{
+	int	x;
+	int	y;
+	int	z;
+}				t_point;
+
 typedef struct	s_map
 {
-	char 	**board;
-	int		**tab;
+	char	**board;
+	t_point	*tab;
 }				t_map;
 
 typedef struct	s_mlx
@@ -36,7 +43,7 @@ typedef struct	s_mlx
 
 
 int		read_to_list(int fd, t_map *map);
-void	clean_map(t_map *map);
+void	clean_board(t_map *map);
 int		key_press(int keycode, void *param);
 int 	data_trans(t_map *map);
 
