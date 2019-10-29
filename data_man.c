@@ -6,7 +6,7 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 17:18:32 by plagache          #+#    #+#             */
-/*   Updated: 2019/10/29 12:19:01 by alagache         ###   ########.fr       */
+/*   Updated: 2019/10/29 13:06:21 by alagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int		alloc_tab(t_map *map, t_point *pt)
 		while (map->board[0][c] && ft_isdigit(map->board[0][c]) == 0)
 			c++;
 	}
-	if (!(map->tab = (t_point*)malloc(sizeof(t_point) * (pt->y * pt->x) + 1)))
+	if (!(map->tab = (t_point*)malloc(sizeof(t_point) * (pt->y * pt->x))))
 		return (0);
-	map->tab[pt->y * pt->x] = NULL;
+	ft_printf("X=%i | Y=%i\n", pt->x, pt->y);
 	return (1);
 }
 
@@ -53,13 +53,39 @@ int		same_length(t_map *map)
 	return (0);
 }
 
+/*along pt->y str of board, there is pt->x numbers*/
+/*while there are lines, map->tab->z = atoi(map->board[y] + pos along str*/
+void	fill_tab(t_map *map, t_point *pt)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < pt->y)
+	{
+	x = 0;
+		while (x < pt->x)
+		{
+			(map->tab[y * pt->x + x]).x = x;
+			(map->tab[y * pt->x + x]).y = y;
+			(map->tab[y * pt->x + x]).z = atoi(map->board[y]);
+			//ft_printf("X=%i | Y=%i | Z=%i\n", (map->tab[y * pt->x + x]).x, (map->tab[y * pt->x + x]).y, (map->tab[y * pt->x + x]).z);
+			x++;
+		}
+		y++;
+	}
+}
+
+
 int 	data_trans(t_map *map)
 {
 	t_point	pt;
 
 	if (same_length(map) == -1)
 		return (-1);
-	if (alloc_tab(map, &pt) == 0);
+	if (alloc_tab(map, &pt) == 0)
 		return (-1);
+	fill_tab(map, &pt);
+	free(map->tab);
 	return (0);
 }

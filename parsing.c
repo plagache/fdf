@@ -13,7 +13,7 @@ void	dispay(char **board)
 	}
 }
 
-void	clean_map(t_map *map)
+void	clean_board(t_map *map)
 {
 	int c;
 
@@ -86,6 +86,6 @@ int		read_to_list(int fd, t_map *map)
 	}
 	if (list_to_array(map, head, c) == -1)
 		return (-1);
-	dispay(map->board);
+	//dispay(map->board);
 	return (0);
 }
