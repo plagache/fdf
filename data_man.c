@@ -6,12 +6,11 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 17:18:32 by plagache          #+#    #+#             */
-/*   Updated: 2019/10/29 14:16:46 by plagache         ###   ########.fr       */
+/*   Updated: 2019/10/29 20:19:07 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fdf.h"
-#include <stdio.h>
 #include "minilibx_macos/mlx.h"
 
 int		alloc_tab(t_map *map, t_point *pt)
@@ -95,5 +94,6 @@ int 	data_trans(t_map *map)
 	fill_tab(map, &pt);
 	map->x_max = pt.x;
 	map->y_max = pt.y;
+	map->scaled = 0;
 	return (0);
 }

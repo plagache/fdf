@@ -5,6 +5,8 @@ SRCS= main.c\
 	  key_press.c\
 	  data_man.c\
 	  tracer.c\
+	  isometrique.c\
+	  line.c\
 
 OBJ= $(SRCS:.c=.o)
 
