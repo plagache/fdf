@@ -6,7 +6,7 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 16:51:45 by plagache          #+#    #+#             */
-/*   Updated: 2019/10/29 20:21:15 by plagache         ###   ########.fr       */
+/*   Updated: 2019/10/30 12:22:55 by alagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,27 @@
 #include "minilibx_macos/mlx.h"
 #include "libft/includes/ft_printf.h"
 
-void		expose_hook(t_mlx *mlx)
+void	escape(t_mlx *mlx)
 {
-	mlx->img_ptr = mlx_new_image(mlx->init, IMG_WIDTH, IMG_HEIGHT);
-	mlx->img_data = (int *)mlx_get_data_addr(mlx->img_ptr, &mlx->bpp, &mlx->size_l, &mlx->endian);
-	mlx_put_image_to_window(mlx->init, mlx->window, mlx->img_ptr, 100, 100);
-	mlx_destroy_image(mlx->init, mlx->img_ptr);
+	t_map *map;
+
+	map = mlx->map;
+	if (mlx->img_ptr)
+		mlx_destroy_image(mlx->init, mlx->img_ptr);
+	mlx_destroy_window(mlx->init, mlx->window);
+	if (map->tab)
+		free(map->tab);
 }
 
+/*
+** drwa_func(mlx, draw_code)
+** clear_window
+** new_image
+** get_addr
+** sub_draw"i/p"
+** put_image
+** destroy_image
+*/
 int		key_press(int keycode, void *param)
 {
 	t_mlx	*mlx;
@@ -29,7 +42,7 @@ int		key_press(int keycode, void *param)
 	mlx = (t_mlx *)param;
 	if (keycode == ECHAP)
 	{
-		mlx_destroy_image(mlx->init, mlx->img_ptr);
+		escape(mlx);
 		exit(0);
 	}
 	if (keycode == RIGHT)
@@ -40,6 +53,5 @@ int		key_press(int keycode, void *param)
 	}
 	//	if (keycode == LEFT)
 	//		draw_i(mlx->img_data ,mlx->map);
-	expose_hook(mlx);
 	return (0);
 }

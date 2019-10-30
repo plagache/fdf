@@ -23,9 +23,9 @@
 
 typedef struct	s_point
 {
-	int	x;
-	int	y;
-	int	z;
+	double	x;
+	double	y;
+	double	z;
 }				t_point;
 
 typedef struct	s_map
@@ -51,11 +51,12 @@ typedef struct	s_mlx
 
 
 int		read_to_list(int fd, t_map *map);
-void	clean_board(t_map *map);
 int		key_press(int keycode, void *param);
 int 	data_trans(t_map *map);
 int		*draw_p(int *data, t_map *map);
 void	vol_to_iso(t_map *map);
 void	which_line(int *data, t_point A, t_point B);
+void	clean_board(t_map *map);
+void	clean_list(t_list *head);
 
 #endif
