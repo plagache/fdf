@@ -9,6 +9,7 @@ SRCS= main.c\
 	  line.c\
 	  clean.c\
 
+
 OBJ= $(SRCS:.c=.o)
 
 LIBDIR= libft

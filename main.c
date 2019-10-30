@@ -6,7 +6,7 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 16:51:26 by plagache          #+#    #+#             */
-/*   Updated: 2019/10/30 13:28:11 by alagache         ###   ########.fr       */
+/*   Updated: 2019/10/30 15:32:53 by alagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	get_mlx(t_mlx *mlx, t_map *map)
 	mlx->init = mlx_init();
 	mlx->window = mlx_new_window(mlx->init, WIN_WIDTH, WIN_HEIGHT, "fdf");
 	mlx->map = map;
+	mlx->delta = 0;
 	mlx_hook(mlx->window, 2, 0, &key_press, mlx);
 }
 

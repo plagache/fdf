@@ -20,14 +20,16 @@
 # define LEFT 123
 # define ZOOM 69
 # define DEZOOM 78
-/*
-typedef struct	s_point
+
+# define DELTA 0.54
+
+typedef struct	s_double
 {
 	double	x;
 	double	y;
 	double	z;
-}				t_point;
-*/
+}				t_double;
+
 typedef struct	s_point
 {
 	int	x;
@@ -38,6 +40,7 @@ typedef struct	s_map
 {
 	char	**board;
 	t_point	*tab;
+	t_point	*tab_p;
 	int		x_max;
 	int		y_max;
 	int		scaled;
@@ -52,6 +55,7 @@ typedef struct	s_mlx
 	int		size_l;
 	int		endian;
 	int		bpp;
+	double	delta;
 	t_map	*map;
 }				t_mlx;
 
@@ -60,7 +64,8 @@ int		read_file(t_map *map, char	*path);
 int		read_to_list(int fd, t_map *map, t_list *head);
 int		key_press(int keycode, void *param);
 int 	data_trans(t_map *map);
-int		*draw_p(int *data, t_map *map);
+void	draw_iso(t_mlx *mlx, t_map *map);
+void	rotate(t_map *map, double delta);
 void	vol_to_iso(t_map *map);
 void	which_line(int *data, t_point A, t_point B);
 void	clean_board(t_map *map);

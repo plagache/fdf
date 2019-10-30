@@ -6,7 +6,7 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 19:47:07 by plagache          #+#    #+#             */
-/*   Updated: 2019/10/29 19:47:35 by plagache         ###   ########.fr       */
+/*   Updated: 2019/10/30 15:40:11 by alagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int		*draw_line_low(int *data, t_point A, t_point B)
 	Y = A.y;
 	while (A.x != B.x)
 	{
-		data[Y * IMG_WIDTH + A.x] = 0x00FFFFFF;
+		if (Y >= 0 && Y < IMG_HEIGHT)
+			data[Y * IMG_WIDTH + A.x] = 0x00FFFFFF;
 		if (D > 0)
 		{
 			Y = Y + yi;
@@ -56,7 +57,8 @@ int		*draw_line_high(int *data, t_point A, t_point B)
 	X = A.x;
 	while (A.y != B.y)
 	{
-		data[A.y * IMG_WIDTH + X] = 0x00FFFFFF;
+		if (X >= 0 && X < IMG_WIDTH)
+			data[A.y * IMG_WIDTH + X] = 0x00FFFFFF;
 		if (D > 0)
 		{
 			X = X + xi;
