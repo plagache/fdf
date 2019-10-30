@@ -70,10 +70,13 @@ int		read_file(t_map *map, char	*path)
 
 	head = NULL;
 	fd = open(path, O_RDONLY);
-	if (fd < 0 || read_to_list(fd, map, head) == -1)
+	if (fd < 0 || (read_to_list(fd, map, head) == -1))
 	{
-		clean_list(head);
-		clean_board(map);
+		if (fd >= 0)
+		{
+			clean_list(head);
+			clean_board(map);
+		}
 		close(fd);
 		return (-1);
 	}

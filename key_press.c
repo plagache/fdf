@@ -6,7 +6,7 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 16:51:45 by plagache          #+#    #+#             */
-/*   Updated: 2019/10/30 15:36:28 by alagache         ###   ########.fr       */
+/*   Updated: 2019/10/30 16:14:41 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,16 @@ int		key_press(int keycode, void *param)
 	if (keycode == UP)
 	{
 		mlx->delta += 1;
-		if (mlx->delta >= 360)
+		if (mlx->delta > 360)
 			mlx->delta = 0;
+		draw_iso(mlx, mlx->map);
+		return (0);
+	}
+	if (keycode == DOWN)
+	{
+		mlx->delta -= 1;
+		if (mlx->delta < 0)
+			mlx->delta = 360;
 		draw_iso(mlx, mlx->map);
 		return (0);
 	}

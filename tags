@@ -1,22 +1,28 @@
-Mmain	main.c	/^int		main(int ac, char **av)$/
-alloc_tab	data_man.c	/^int		alloc_tab(t_map *map, t_point *pt)$/
-clean_board	clean.c	/^void	clean_board(t_map *map)$/
-clean_list	clean.c	/^void	clean_list(t_list *head)$/
-data_trans	data_man.c	/^int 	data_trans(t_map *map)$/
-draw_i	tracer.c	/^int		*draw_i(int *data, t_map *map)$/
-draw_iso	tracer.c	/^void	draw_iso(t_mlx *mlx, t_map *map)$/
-draw_line_high	line.c	/^int		*draw_line_high(int *data, t_point A, t_point/
-draw_line_low	line.c	/^int		*draw_line_low(int *data, t_point A, t_point /
-draw_p	tracer.c	/^int		*draw_p(int *data, t_map *map)$/
-fill_tab	data_man.c	/^void	fill_tab(t_map *map, t_point *pt)$/
-fill_tabp	data_man.c	/^void	fill_tabp(t_map *map, t_point *pt)$/
-ft_isnbr	data_man.c	/^int		ft_isnbr(char c)$/
-get_mlx	main.c	/^void	get_mlx(t_mlx *mlx, t_map *map)$/
-is_map	parsing.c	/^int		is_map(char *str)$/
-key_press	key_press.c	/^int		key_press(int keycode, void *param)$/
-list_to_array	parsing.c	/^int		list_to_array(t_map *map, t_list *head, int c/
-read_file	parsing.c	/^int		read_file(t_map *map, char	*path)$/
-read_to_list	parsing.c	/^int		read_to_list(int fd, t_map *map, t_list *head/
-rotate	isometrique.c	/^void	rotate(t_map *map, double delta)$/
-scale	tracer.c	/^int		scale(t_map *map)$/
-which_line	line.c	/^void	which_line(int *data, t_point A, t_point B)$/
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+alloc_tab	data_man.c	/^int		alloc_tab(t_map *map, t_point *pt)$/;"	f
+clean_board	clean.c	/^void	clean_board(t_map *map)$/;"	f
+clean_list	clean.c	/^void	clean_list(t_list *head)$/;"	f
+data_trans	data_man.c	/^int 	data_trans(t_map *map)$/;"	f
+draw_i	tracer.c	/^int		*draw_i(int *data, t_map *map)$/;"	f
+draw_iso	tracer.c	/^void	draw_iso(t_mlx *mlx, t_map *map)$/;"	f
+draw_line_high	line.c	/^int		*draw_line_high(int *data, t_point A, t_point B)$/;"	f
+draw_line_low	line.c	/^int		*draw_line_low(int *data, t_point A, t_point B)$/;"	f
+draw_p	tracer.c	/^int		*draw_p(int *data, t_map *map)$/;"	f
+fill_tab	data_man.c	/^void	fill_tab(t_map *map, t_point *pt)$/;"	f
+fill_tabp	data_man.c	/^void	fill_tabp(t_map *map, t_point *pt)$/;"	f
+ft_isnbr	data_man.c	/^int		ft_isnbr(char c)$/;"	f
+get_mlx	main.c	/^void	get_mlx(t_mlx *mlx, t_map *map)$/;"	f
+is_map	parsing.c	/^int		is_map(char *str)$/;"	f
+key_press	key_press.c	/^int		key_press(int keycode, void *param)$/;"	f
+list_to_array	parsing.c	/^int		list_to_array(t_map *map, t_list *head, int c)$/;"	f
+main	main.c	/^int		main(int ac, char **av)$/;"	f
+read_file	parsing.c	/^int		read_file(t_map *map, char	*path)$/;"	f
+read_to_list	parsing.c	/^int		read_to_list(int fd, t_map *map, t_list *head)$/;"	f
+rotate	isometrique.c	/^void	rotate(t_map *map, double delta)$/;"	f
+scale	tracer.c	/^int		scale(t_map *map)$/;"	f
+which_line	line.c	/^void	which_line(int *data, t_point A, t_point B)$/;"	f

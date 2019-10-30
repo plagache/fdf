@@ -68,6 +68,7 @@ void	draw_iso(t_mlx *mlx, t_map *map);
 void	rotate(t_map *map, double delta);
 void	vol_to_iso(t_map *map);
 void	which_line(int *data, t_point A, t_point B);
+void	plot_line(int *data, t_point A, t_point B);
 void	clean_board(t_map *map);
 void	clean_list(t_list *head);
 

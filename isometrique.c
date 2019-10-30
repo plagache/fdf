@@ -6,7 +6,7 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 17:30:33 by plagache          #+#    #+#             */
-/*   Updated: 2019/10/30 15:32:41 by alagache         ###   ########.fr       */
+/*   Updated: 2019/10/30 19:46:26 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,14 @@ void	rotate(t_map *map, double delta)
 			+ (map->tab[c].z * -sin(delta));
 		iso.z = (map->tab[c].x * 0) + (map->tab[c].y * sin(delta))
 			+ (map->tab[c].z * cos(delta));
-		map->tab_p[c].x = iso.x;
-		map->tab_p[c].y = iso.y;
+		map->tab_p[c].x = iso.x * 50;
+		map->tab_p[c].y = iso.y * 50;
 		c++;
 	}
+	c = 2 * map->y_max + 3;
+	printf("%i %i\n", map->tab[c].x, map->tab[c].y);
+	c = 2 * map->y_max + 4;
+	printf("%i %i\n", map->tab[c].x, map->tab[c].y);
+	c = 2 * map->y_max + 5;
+	printf("%i %i\n", map->tab[c].x, map->tab[c].y);
 }
