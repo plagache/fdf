@@ -63,14 +63,14 @@ int		read_to_list(int fd, t_map *map, t_list *head)
 	return (0);
 }
 
-int		read_file(t_map *map)
+int		read_file(t_map *map, char	*path)
 {
 	int	fd;
 	t_list	*head;
 
-	head == NULL;
-	fd = open(av[1], O_RDONLY);
-	if (fd < 0 || (ret = read_to_list(fd, map, head)) == -1
+	head = NULL;
+	fd = open(path, O_RDONLY);
+	if (fd < 0 || read_to_list(fd, map, head) == -1)
 	{
 		clean_list(head);
 		clean_board(map);
@@ -84,6 +84,5 @@ int		read_file(t_map *map)
 		return (-1);
 	}
 	close(fd);
-	clean_board(map);
 	return (0);
 }

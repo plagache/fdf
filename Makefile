@@ -7,6 +7,7 @@ SRCS= main.c\
 	  tracer.c\
 	  isometrique.c\
 	  line.c\
+	  clean.c\
 
 OBJ= $(SRCS:.c=.o)
 
@@ -16,7 +17,7 @@ LIBA = $(LIBDIR)/libft.a
 #LIBA += minilibx/libmlx.a
 LIBA += minilibx_macos/libmlx.a
 
-CFLAGS= -Wall -Werror -Wextra
+CFLAGS= -Wall -Werror -Wextra -g
 #CFLAGS += -g3 -fsanitize=address -fno-omit-frame-pointer
 
 all: $(NAME)

@@ -6,7 +6,7 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 16:51:26 by plagache          #+#    #+#             */
-/*   Updated: 2019/10/30 12:18:12 by alagache         ###   ########.fr       */
+/*   Updated: 2019/10/30 13:28:11 by alagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,13 @@ int		main(int ac, char **av)
 {
 	t_mlx	mlx;
 	t_map	map;
-	int		fd;
-	int		ret;
 
 	if (ac != 2)
 	{
 		ft_putendl("usage : ./fdf path/to/map.fdf");
 		return (-1);
 	}
-	if (read_file == -1)
+	if (read_file(&map, av[1]) == -1)
 	{
 		ft_putendl("error");
 		return (-1);

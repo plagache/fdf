@@ -6,7 +6,7 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 17:18:32 by plagache          #+#    #+#             */
-/*   Updated: 2019/10/30 12:17:23 by alagache         ###   ########.fr       */
+/*   Updated: 2019/10/30 13:26:34 by alagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		alloc_tab(t_map *map, t_point *pt)
 	pt->y = 0;
 	pt->x = 0;
 	c = 0;
-	while (map->board[pt->y])
+	while (map->board[(int)pt->y])
 		pt->y++;
 	while (map->board[0][c])
 	{
@@ -57,13 +57,13 @@ void	fill_tab(t_map *map, t_point *pt)
 		c = 0;
 		while (x < pt->x)
 		{
-			(map->tab[y * pt->x + x]).x = x;
-			(map->tab[y * pt->x + x]).y = y;
-			(map->tab[y * pt->x + x]).z = atoi(map->board[y] + c);
-			while (map->board[y][c] && ft_isnbr(map->board[y][c]) == 1);
+			(map->tab[(int)(y * pt->x + x)]).x = x;
+			(map->tab[(int)(y * pt->x + x)]).y = y;
+			(map->tab[(int)(y * pt->x + x)]).z = atoi(map->board[y] + c);
+			while (map->board[y][c] && ft_isnbr(map->board[y][c]) == 1)
 			//(ft_isdigit(map->board[y][c]) == 1 || map->board[y][c] == '-'))
 				c++;
-			while (map->board[y][c] && ft_isnbr(map->board[y][c]) == 0);
+			while (map->board[y][c] && ft_isnbr(map->board[y][c]) == 0)
 			//ft_isdigit(map->board[y][c]) == 0 && map->board[y][c] != '-')
 				c++;
 			x++;

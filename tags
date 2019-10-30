@@ -13,7 +13,7 @@ get_mlx	main.c	/^void	get_mlx(t_mlx *mlx, t_map *map)$/
 is_map	parsing.c	/^int		is_map(char *str)$/
 key_press	key_press.c	/^int		key_press(int keycode, void *param)$/
 list_to_array	parsing.c	/^int		list_to_array(t_map *map, t_list *head, int c/
-read_file	parsing.c	/^int		read_file(t_map *map)$/
+read_file	parsing.c	/^int		read_file(t_map *map, char	*path)$/
 read_to_list	parsing.c	/^int		read_to_list(int fd, t_map *map, t_list *head/
 scale	tracer.c	/^int		scale(t_map *map)$/
 vol_to_iso	isometrique.c	/^void	vol_to_iso(t_map *map)$/

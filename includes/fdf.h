@@ -20,14 +20,20 @@
 # define LEFT 123
 # define ZOOM 69
 # define DEZOOM 78
-
+/*
 typedef struct	s_point
 {
 	double	x;
 	double	y;
 	double	z;
 }				t_point;
-
+*/
+typedef struct	s_point
+{
+	int	x;
+	int	y;
+	int	z;
+}				t_point;
 typedef struct	s_map
 {
 	char	**board;
@@ -50,7 +56,8 @@ typedef struct	s_mlx
 }				t_mlx;
 
 
-int		read_to_list(int fd, t_map *map);
+int		read_file(t_map *map, char	*path);
+int		read_to_list(int fd, t_map *map, t_list *head);
 int		key_press(int keycode, void *param);
 int 	data_trans(t_map *map);
 int		*draw_p(int *data, t_map *map);
