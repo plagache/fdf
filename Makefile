@@ -5,28 +5,27 @@ SRCS= main.c\
 	  key_press.c\
 	  data_man.c\
 	  tracer.c\
-	  isometrique.c\
+	  rotate.c\
 	  line.c\
 	  clean.c\
-
 
 OBJ= $(SRCS:.c=.o)
 
 LIBDIR= libft
 
+MINILIB = minilibx_macos
 LIBA = $(LIBDIR)/libft.a
-#LIBA += minilibx/libmlx.a
-LIBA += minilibx_macos/libmlx.a
+LIBA += $(MINILIB)/libmlx.a
 
 CFLAGS= -Wall -Werror -Wextra -g
-#CFLAGS += -g3 -fsanitize=address -fno-omit-frame-pointer
+LFLAGS= -framework OpenGL -framework AppKit 
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@make -s -C $(LIBDIR)
-	@#gcc $(CFLAGS) -o $(NAME) $(OBJ) $(LIBA) -lXext -lX11
-	@gcc $(CFLAGS) -o $(NAME) $(OBJ) $(LIBA) -framework OpenGL -framework AppKit 
+	@make -C $(LIBDIR)
+	@make -C $(MINILIB) &> /dev/null
+	@gcc $(CFLAGS) -o $(NAME) $(OBJ) $(LIBA) $(LFLAGS) 
 	@echo "fdf build complete"
 
 %.o : %.c
@@ -36,9 +35,11 @@ clean:
 		@rm -rf $(OBJ)
 		@echo "fdf objects cleaned"
 		@make clean -C $(LIBDIR)
+		@make clean -C $(MINILIB)
 
 fclean:
 		@make fclean -s -C $(LIBDIR)
+		@make clean -C $(MINILIB)
 		@rm -f $(NAME)
 		@rm -rf $(OBJ)
 		@echo "fdf objects cleaned"

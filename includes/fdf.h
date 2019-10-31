@@ -4,7 +4,6 @@
 # include "../minilibx/mlx.h"
 # include "../libft/includes/libft.h"
 # include <unistd.h>
-# include <stdio.h>
 # include <fcntl.h>
 # include <stdlib.h>
 # include <math.h>
@@ -20,8 +19,6 @@
 # define LEFT 123
 # define ZOOM 69
 # define DEZOOM 78
-
-# define DELTA 0.54
 
 typedef struct	s_double
 {
@@ -56,6 +53,7 @@ typedef struct	s_mlx
 	int		endian;
 	int		bpp;
 	double	delta;
+	double	alpha;
 	t_map	*map;
 }				t_mlx;
 
@@ -64,12 +62,13 @@ int		read_file(t_map *map, char	*path);
 int		read_to_list(int fd, t_map *map, t_list *head);
 int		key_press(int keycode, void *param);
 int 	data_trans(t_map *map);
-void	draw_iso(t_mlx *mlx, t_map *map);
 void	rotate(t_map *map, double delta);
-void	vol_to_iso(t_map *map);
 void	which_line(int *data, t_point A, t_point B);
-void	plot_line(int *data, t_point A, t_point B);
 void	clean_board(t_map *map);
 void	clean_list(t_list *head);
+void	rotate_x(t_map *map, double delta);
+void	rotate_y(t_map *map, double alpha);
+void	draw_y(t_mlx *mlx, t_map *map);
+void	draw_x(t_mlx *mlx, t_map *map);
 
 #endif

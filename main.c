@@ -6,12 +6,11 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 16:51:26 by plagache          #+#    #+#             */
-/*   Updated: 2019/10/30 17:57:23 by plagache         ###   ########.fr       */
+/*   Updated: 2019/10/31 12:12:34 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fdf.h"
-#include "minilibx_macos/mlx.h"
 
 void	get_mlx(t_mlx *mlx, t_map *map)
 {
@@ -19,6 +18,7 @@ void	get_mlx(t_mlx *mlx, t_map *map)
 	mlx->window = mlx_new_window(mlx->init, WIN_WIDTH, WIN_HEIGHT, "fdf");
 	mlx->map = map;
 	mlx->delta = 30;
+	mlx->alpha = 30;
 	mlx_hook(mlx->window, 2, 0, &key_press, mlx);
 }
 
@@ -38,6 +38,7 @@ int		main(int ac, char **av)
 		return (-1);
 	}
 	get_mlx(&mlx, &map);
+	draw_x(&mlx, &map);
 	mlx_loop(mlx.init);
 	return (0);
 }

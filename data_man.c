@@ -6,12 +6,11 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 17:18:32 by plagache          #+#    #+#             */
-/*   Updated: 2019/10/30 14:25:49 by alagache         ###   ########.fr       */
+/*   Updated: 2019/10/31 12:02:39 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fdf.h"
-#include "minilibx_macos/mlx.h"
 
 int		alloc_tab(t_map *map, t_point *pt)
 {

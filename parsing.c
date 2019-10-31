@@ -1,6 +1,4 @@
 #include "includes/fdf.h"
-#include "libft/includes/libft.h"
-#include "libft/includes/get_next_line.h"
 
 int		is_map(char *str)
 {
