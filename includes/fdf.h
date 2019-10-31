@@ -67,6 +67,7 @@ void	rotate(t_map *map, double delta);
 void	which_line(int *data, t_point A, t_point B);
 void	clean_board(t_map *map);
 void	clean_list(t_list *head);
+void	clean_tab(t_map *map);
 void	rotate_x(t_map *map, double delta);
 void	rotate_y(t_map *map, double alpha);
 void	rotate_z(t_map *map, double sigma);

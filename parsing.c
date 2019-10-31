@@ -6,11 +6,12 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:01:12 by plagache          #+#    #+#             */
-/*   Updated: 2019/10/31 16:02:21 by plagache         ###   ########.fr       */
+/*   Updated: 2019/10/31 18:04:42 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fdf.h"
+#include <stdio.h>
 
 int		is_map(char *str)
 {
@@ -68,25 +69,28 @@ int		read_to_list(int fd, t_map *map, t_list *head)
 		begin = begin->next;
 		c++;
 	}
+	free(tmp);
 	if (list_to_array(map, head, c) == -1)
 		return (-1);
 	return (0);
 }
-
 int		read_file(t_map *map, char *path)
 {
 	int		fd;
 	t_list	*head;
+	int		i = 0;
 
 	head = NULL;
 	fd = open(path, O_RDONLY);
-	if (fd < 0 || (read_to_list(fd, map, head) == -1))
+	if (fd < 0)
 	{
-		if (fd >= 0)
-		{
-			clean_list(head);
-			clean_board(map);
-		}
+		close(fd);
+		return (-1);
+	}
+	if ((i = (read_to_list(fd, map, head)) == -1))
+	{
+		clean_list(head);
+		clean_board(map);
 		close(fd);
 		return (-1);
 	}

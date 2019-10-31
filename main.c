@@ -6,11 +6,12 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 16:51:26 by plagache          #+#    #+#             */
-/*   Updated: 2019/10/31 15:36:18 by plagache         ###   ########.fr       */
+/*   Updated: 2019/10/31 17:09:14 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fdf.h"
+#include <stdio.h>
 
 void	get_mlx(t_mlx *mlx, t_map *map)
 {
@@ -55,5 +56,6 @@ int		main(int ac, char **av)
 	center_tab(&map);
 	draw_x(&mlx, &map);
 	mlx_loop(mlx.init);
+	clean_tab(&map);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:06:53 by plagache          #+#    #+#             */
-/*   Updated: 2019/10/31 12:06:55 by plagache         ###   ########.fr       */
+/*   Updated: 2019/10/31 17:29:31 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	clean_list(t_list *head)
 			ptr = head;
 			if (head->content != NULL)
 				free(head->content);
-			head = head->next;
 			free(ptr);
+			head = head->next;
 		}
 	}
 }
@@ -40,4 +40,10 @@ void	clean_board(t_map *map)
 		c++;
 	}
 	free(map->board);
+}
+
+void	clean_tab(t_map *map)
+{
+	free(map->tab);
+	free(map->tab_p);
 }
