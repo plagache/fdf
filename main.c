@@ -6,7 +6,7 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 16:51:26 by plagache          #+#    #+#             */
-/*   Updated: 2019/10/31 12:12:34 by plagache         ###   ########.fr       */
+/*   Updated: 2019/10/31 15:36:18 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,21 @@ void	get_mlx(t_mlx *mlx, t_map *map)
 	mlx->map = map;
 	mlx->delta = 30;
 	mlx->alpha = 30;
+	mlx->sigma = 0;
 	mlx_hook(mlx->window, 2, 0, &key_press, mlx);
+}
+
+void	center_tab(t_map *map)
+{
+	int c;
+
+	c = 0;
+	while (c < map->x_max * map->y_max)
+	{
+		map->tab[c].x -= map->x_max / 2;
+		map->tab[c].y -= map->y_max / 2;
+		c++;
+	}
 }
 
 int		main(int ac, char **av)
@@ -38,6 +52,7 @@ int		main(int ac, char **av)
 		return (-1);
 	}
 	get_mlx(&mlx, &map);
+	center_tab(&map);
 	draw_x(&mlx, &map);
 	mlx_loop(mlx.init);
 	return (0);

@@ -8,17 +8,17 @@
 # include <stdlib.h>
 # include <math.h>
 
-# define WIN_WIDTH 1024
-# define WIN_HEIGHT 768
-# define IMG_WIDTH 1000
-# define IMG_HEIGHT 700
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
+# define IMG_WIDTH 1600
+# define IMG_HEIGHT 900
 # define ECHAP 53
 # define UP	126
 # define DOWN 125
 # define RIGHT 124
 # define LEFT 123
-# define ZOOM 69
-# define DEZOOM 78
+# define PLUS 69
+# define MINUS 78
 
 typedef struct	s_double
 {
@@ -54,6 +54,7 @@ typedef struct	s_mlx
 	int		bpp;
 	double	delta;
 	double	alpha;
+	double	sigma;
 	t_map	*map;
 }				t_mlx;
 
@@ -68,7 +69,8 @@ void	clean_board(t_map *map);
 void	clean_list(t_list *head);
 void	rotate_x(t_map *map, double delta);
 void	rotate_y(t_map *map, double alpha);
-void	draw_y(t_mlx *mlx, t_map *map);
+void	rotate_z(t_map *map, double sigma);
 void	draw_x(t_mlx *mlx, t_map *map);
+void	center_tab_plus(t_map *map);
 
 #endif

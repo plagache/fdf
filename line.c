@@ -5,97 +5,93 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/29 19:47:07 by plagache          #+#    #+#             */
-/*   Updated: 2019/10/31 11:24:06 by plagache         ###   ########.fr       */
+/*   Created: 2019/10/31 16:00:52 by plagache          #+#    #+#             */
+/*   Updated: 2019/10/31 16:00:54 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fdf.h"
-#include "minilibx_macos/mlx.h"
-#include "libft/includes/ft_printf.h"
 
-int		*draw_line_low(int *data, t_point A, t_point B)
+int		*draw_line_low(int *data, t_point a, t_point b)
 {
-	int x_diff;
-	int y_diff;
-	int D;
-	int Y;
-	int yi;
+	t_point	diff;
+	int		d;
+	int		y;
+	int		yi;
 
-	x_diff = B.x - A.x;
-	y_diff = B.y - A.y;
-	yi = (y_diff < 0) ? -1 : 1;
-	y_diff = abs(y_diff);
-	D = 2 * y_diff - x_diff;
-	Y = A.y;
-	while (A.x <= B.x)
+	diff.x = b.x - a.x;
+	diff.y = b.y - a.y;
+	yi = (diff.y < 0) ? -1 : 1;
+	diff.y = abs(diff.y);
+	d = 2 * diff.y - diff.x;
+	y = a.y;
+	while (a.x <= b.x)
 	{
-	//	printf("A.x=%i||B.x=%i\nA.y=%i||B.y=%i\n\n", A.x, B.x, A.y, B.y);
-		if ((Y * IMG_WIDTH + A.x) >= 0 && (Y * IMG_WIDTH + A.x) < IMG_WIDTH * IMG_HEIGHT)
-			data[Y * IMG_WIDTH + A.x] = 0x00FFFFFF;
-		if (D > 0)
+		if ((y * IMG_WIDTH + a.x) >= 0
+				&& (y * IMG_WIDTH + a.x) < IMG_WIDTH * IMG_HEIGHT)
+			data[y * IMG_WIDTH + a.x] = 0x00FFFFFF;
+		if (d > 0)
 		{
-			Y = Y + yi;
-			D = D - 2 * x_diff;
+			y = y + yi;
+			d = d - 2 * diff.x;
 		}
-		D = D + 2 * y_diff;
-		A.x++;
+		d = d + 2 * diff.y;
+		a.x++;
 	}
 	return (data);
 }
 
-int		*draw_line_high(int *data, t_point A, t_point B)
+int		*draw_line_high(int *data, t_point a, t_point b)
 {
-	int x_diff;
-	int y_diff;
-	int D;
-	int X;
-	int xi;
+	t_point	diff;
+	int		d;
+	int		x;
+	int		xi;
 
-	x_diff = B.x - A.x;
-	y_diff = B.y - A.y;
-	xi = (x_diff < 0) ? -1 : 1;
-	x_diff = abs(x_diff);
-	D = 2 * x_diff - y_diff;
-	X = A.x;
-	while (A.y <= B.y)
+	diff.x = b.x - a.x;
+	diff.y = b.y - a.y;
+	xi = (diff.x < 0) ? -1 : 1;
+	diff.x = abs(diff.x);
+	d = 2 * diff.x - diff.y;
+	x = a.x;
+	while (a.y <= b.y)
 	{
-		if (((A.y * IMG_WIDTH + X) >= 0) && (A.y * IMG_WIDTH + X) < IMG_WIDTH * IMG_HEIGHT)
-			data[A.y * IMG_WIDTH + X] = 0x00FFFFFF;
-		if (D > 0)
+		if (((a.y * IMG_WIDTH + x) >= 0)
+				&& (a.y * IMG_WIDTH + x) < IMG_WIDTH * IMG_HEIGHT)
+			data[a.y * IMG_WIDTH + x] = 0x00FFFFFF;
+		if (d > 0)
 		{
-			X = X + xi;
-			D = D - 2 * y_diff;
+			x = x + xi;
+			d = d - 2 * diff.y;
 		}
-		D = D + 2 * x_diff;
-		A.y++;
+		d = d + 2 * diff.x;
+		a.y++;
 	}
 	return (data);
 }
 
-void	which_line(int *data, t_point A, t_point B)
+void	which_line(int *data, t_point a, t_point b)
 {
-//	printf("A.x=%i||B.x=%i\nA.y=%i||B.y=%i\n\n", A.x, B.x, A.y, B.y);
-	if (abs(B.y - A.y) < abs(B.x - A.x))
+	if (abs(b.y - a.y) < abs(b.x - a.x))
 	{
-		if (A.x > B.x)
+		if (a.x > b.x)
 		{
-			draw_line_low(data, B, A);
+			draw_line_low(data, b, a);
 		}
 		else
 		{
-			draw_line_low(data, A, B);
+			draw_line_low(data, a, b);
 		}
 	}
 	else
 	{
-		if (A.y > B.y)
+		if (a.y > b.y)
 		{
-			draw_line_high(data, B, A);
+			draw_line_high(data, b, a);
 		}
 		else
 		{
-			draw_line_high(data, A, B);
+			draw_line_high(data, a, b);
 		}
 	}
 }

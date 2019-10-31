@@ -6,7 +6,7 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 17:18:32 by plagache          #+#    #+#             */
-/*   Updated: 2019/10/31 12:02:39 by plagache         ###   ########.fr       */
+/*   Updated: 2019/10/31 16:08:21 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,7 @@ void	fill_tab(t_map *map, t_point *pt)
 	}
 }
 
-
-int 	data_trans(t_map *map)
+int		data_trans(t_map *map)
 {
 	t_point	pt;
 

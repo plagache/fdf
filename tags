@@ -9,10 +9,10 @@ clean_board	clean.c	/^void	clean_board(t_map *map)$/;"	f
 clean_list	clean.c	/^void	clean_list(t_list *head)$/;"	f
 data_trans	data_man.c	/^int 	data_trans(t_map *map)$/;"	f
 draw_i	tracer.c	/^int		*draw_i(int *data, t_map *map)$/;"	f
-draw_iso	tracer.c	/^void	draw_iso(t_mlx *mlx, t_map *map)$/;"	f
 draw_line_high	line.c	/^int		*draw_line_high(int *data, t_point A, t_point B)$/;"	f
 draw_line_low	line.c	/^int		*draw_line_low(int *data, t_point A, t_point B)$/;"	f
-draw_p	tracer.c	/^int		*draw_p(int *data, t_map *map)$/;"	f
+draw_x	tracer.c	/^void	draw_x(t_mlx *mlx, t_map *map)$/;"	f
+draw_y	tracer.c	/^void	draw_y(t_mlx *mlx, t_map *map)$/;"	f
 fill_tab	data_man.c	/^void	fill_tab(t_map *map, t_point *pt)$/;"	f
 fill_tabp	data_man.c	/^void	fill_tabp(t_map *map, t_point *pt)$/;"	f
 ft_isnbr	data_man.c	/^int		ft_isnbr(char c)$/;"	f
@@ -23,6 +23,7 @@ list_to_array	parsing.c	/^int		list_to_array(t_map *map, t_list *head, int c)$/;
 main	main.c	/^int		main(int ac, char **av)$/;"	f
 read_file	parsing.c	/^int		read_file(t_map *map, char	*path)$/;"	f
 read_to_list	parsing.c	/^int		read_to_list(int fd, t_map *map, t_list *head)$/;"	f
-rotate	isometrique.c	/^void	rotate(t_map *map, double delta)$/;"	f
+rotate_x	rotate.c	/^void	rotate_x(t_map *map, double delta)$/;"	f
+rotate_y	rotate.c	/^void	rotate_y(t_map *map, double alpha)$/;"	f
 scale	tracer.c	/^int		scale(t_map *map)$/;"	f
 which_line	line.c	/^void	which_line(int *data, t_point A, t_point B)$/;"	f

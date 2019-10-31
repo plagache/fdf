@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/31 16:01:12 by plagache          #+#    #+#             */
+/*   Updated: 2019/10/31 16:02:21 by plagache         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "includes/fdf.h"
 
 int		is_map(char *str)
@@ -16,7 +28,7 @@ int		is_map(char *str)
 
 int		list_to_array(t_map *map, t_list *head, int c)
 {
-	int 	ret;
+	int		ret;
 	t_list	*ptr;
 
 	if (!(map->board = (char**)malloc(sizeof(char*) * (c + 1))))
@@ -61,9 +73,9 @@ int		read_to_list(int fd, t_map *map, t_list *head)
 	return (0);
 }
 
-int		read_file(t_map *map, char	*path)
+int		read_file(t_map *map, char *path)
 {
-	int	fd;
+	int		fd;
 	t_list	*head;
 
 	head = NULL;
