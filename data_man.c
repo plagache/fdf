@@ -6,7 +6,7 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 17:18:32 by plagache          #+#    #+#             */
-/*   Updated: 2019/10/31 19:53:17 by alagache         ###   ########.fr       */
+/*   Updated: 2019/11/01 12:45:04 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,27 +50,13 @@ int		ft_isnbr(char c)
 
 void	fill_tabp(t_map *map, t_point *pt)
 {
-	int	x;
-	int	y;
 	int c;
 
-	y = 0;
-	while (y < pt->y)
+	c = 0;
+	while (c < pt->y * pt->x)
 	{
-		x = 0;
-		c = 0;
-		while (x < pt->x)
-		{
-			(map->tab_p[(int)(y * pt->x + x)]).x = x;
-			(map->tab_p[(int)(y * pt->x + x)]).y = y;
-			(map->tab_p[(int)(y * pt->x + x)]).z = atoi(map->board[y] + c);
-			while (map->board[y][c] && ft_isnbr(map->board[y][c]) == 1)
-				c++;
-			while (map->board[y][c] && ft_isnbr(map->board[y][c]) == 0)
-				c++;
-			x++;
-		}
-		y++;
+		map->tab_p[c] = map->tab[c];
+		c++;
 	}
 }
 

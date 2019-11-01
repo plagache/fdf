@@ -6,7 +6,7 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:01:12 by plagache          #+#    #+#             */
-/*   Updated: 2019/10/31 19:28:50 by alagache         ###   ########.fr       */
+/*   Updated: 2019/11/01 12:10:58 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,18 +79,15 @@ int		read_file(t_map *map, char *path)
 {
 	int		fd;
 	t_list	*head;
-	int		i = 0;
 
 	head = NULL;
-	if (ft_strstr(path, "/dev"))
-			return (-1);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
 		close(fd);
 		return (-1);
 	}
-	if ((i = (read_to_list(fd, map, head)) == -1))
+	if ((read_to_list(fd, map, head)) == -1)
 	{
 		clean_list(head);
 		clean_board(map);

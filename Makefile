@@ -17,7 +17,7 @@ MINILIB = minilibx_macos
 LIBA = $(LIBDIR)/libft.a
 LIBA += $(MINILIB)/libmlx.a
 
-CFLAGS= -Wall -Werror -Wextra -g
+CFLAGS= -Wall -Werror -Wextra
 LFLAGS= -framework OpenGL -framework AppKit 
 
 all: $(NAME)

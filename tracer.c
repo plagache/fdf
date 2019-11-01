@@ -6,7 +6,7 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 13:43:04 by plagache          #+#    #+#             */
-/*   Updated: 2019/10/31 19:58:37 by alagache         ###   ########.fr       */
+/*   Updated: 2019/11/01 12:34:14 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 int		scale(t_map *map)
 {
 	int c;
+	int scale;
 
 	c = 0;
 	if (map->scaled != 0)
 		return (0);
+	scale = (map->x_max * map->y_max) > 10000 ? 3 : 4;
 	while (c < map->x_max * map->y_max)
 	{
-		map->tab[c].x *= IMG_WIDTH / (8 * map->x_max);
-		map->tab[c].y *= IMG_HEIGHT / (8 * map->y_max);
+		map->tab[c].x *= IMG_WIDTH / (scale * map->x_max);
+		map->tab[c].y *= IMG_HEIGHT / (scale * map->y_max);
 		c++;
 	}
 	map->scaled++;

@@ -73,5 +73,6 @@ void	rotate_y(t_map *map, double alpha);
 void	rotate_z(t_map *map, double sigma);
 void	draw_x(t_mlx *mlx, t_map *map);
 void	center_tab_plus(t_map *map);
+int		is_map(char *str);
 
 #endif
