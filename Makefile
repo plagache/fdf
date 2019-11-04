@@ -1,13 +1,13 @@
 NAME= fdf
 
-SRCS= main.c\
-	  parsing.c\
-	  key_press.c\
-	  data_man.c\
-	  tracer.c\
-	  rotate.c\
-	  line.c\
-	  clean.c\
+SRCS= src/main.c\
+	  src/parsing.c\
+	  src/key_press.c\
+	  src/data_man.c\
+	  src/tracer.c\
+	  src/rotate.c\
+	  src/line.c\
+	  src/clean.c\
 
 OBJ= $(SRCS:.c=.o)
 

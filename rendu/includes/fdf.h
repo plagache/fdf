@@ -6,7 +6,7 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 11:40:58 by plagache          #+#    #+#             */
-/*   Updated: 2019/11/04 11:41:20 by plagache         ###   ########.fr       */
+/*   Updated: 2019/11/04 16:16:13 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,44 +34,44 @@
 
 typedef struct	s_double
 {
-	double	x;
-	double	y;
-	double	z;
+	double		x;
+	double		y;
+	double		z;
 }				t_double;
 
 typedef struct	s_point
 {
-	int	x;
-	int	y;
-	int	z;
+	int			x;
+	int			y;
+	int			z;
 }				t_point;
 typedef struct	s_map
 {
-	char	**board;
-	t_point	*tab;
-	t_point	*tab_p;
-	int		x_max;
-	int		y_max;
-	int		scaled;
+	char		**board;
+	t_point		*tab;
+	t_point		*tab_p;
+	int			x_max;
+	int			y_max;
+	int			z_max;
+	int			scaled;
 }				t_map;
 
 typedef struct	s_mlx
 {
-	void	*init;
-	void	*window;
-	void	*img_ptr;
-	int		*img_data;
-	int		size_l;
-	int		endian;
-	int		bpp;
-	double	delta;
-	double	alpha;
-	double	sigma;
-	t_map	*map;
+	void		*init;
+	void		*window;
+	void		*img_ptr;
+	int			*img_data;
+	t_map		*map;
+	float		delta;
+	float		alpha;
+	float		sigma;
+	int			size_l;
+	int			endian;
+	int			bpp;
 }				t_mlx;
 
 int				read_file(t_map *map, char	*path);
-int				read_to_list(int fd, t_map *map, t_list *head);
 int				key_press(int keycode, void *param);
 int				data_trans(t_map *map);
 void			rotate(t_map *map, double delta);
@@ -83,7 +83,5 @@ void			rotate_x(t_map *map, double delta);
 void			rotate_y(t_map *map, double alpha);
 void			rotate_z(t_map *map, double sigma);
 void			draw_x(t_mlx *mlx, t_map *map);
-void			center_tab_plus(t_map *map);
-int				is_map(char *str);
 
 #endif
