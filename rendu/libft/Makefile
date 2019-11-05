@@ -6,7 +6,7 @@
 #    By: alagache <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/14 13:09:47 by alagache          #+#    #+#              #
-#    Updated: 2019/11/05 14:05:55 by plagache         ###   ########.fr        #
+#    Updated: 2019/11/05 16:33:09 by plagache         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -108,7 +108,7 @@ SRCS= ft_memset.c\
 	  special.c\
 	  special_tools.c\
 
-CFLAGS= -Wall -Werror -Wextra -g -fsanitize=address,undefined
+CFLAGS= -Wall -Werror -Wextra
 
 HEADERPATH= includes
 
@@ -116,26 +116,26 @@ OBJDIR= obj
 
 OBJ= $(addprefix $(OBJDIR)/,$(SRCS:.c=.o))
 
+CC = clang
 all: $(NAME)
 
 $(NAME): $(OBJ)
 		ar rcs $(NAME) $(OBJ)
-		echo "libft builded"
+		@echo "libft builded"
 
 obj/%.o : srcs/%.c
 	mkdir -p $(OBJDIR)
-	gcc $(CFLAGS) -I $(HEADERPATH) -o $@ -c $<
+	$(CC) $(CFLAGS) -I $(HEADERPATH) -o $@ -c $<
 
 clean:
 		$(RM) -R $(OBJDIR)
-		echo "libft objects cleaned"
+		@echo "libft objects cleaned"
 
 fclean: 
 		$(RM) -R $(OBJDIR)
 		$(RM) $(NAME)
-		echo "libft cleaned"
+		@echo "libft cleaned"
 
 re: fclean all
 
 .PHONY: clean all fclean re FORCE
-.SILENT:

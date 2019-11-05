@@ -6,7 +6,7 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 11:40:58 by plagache          #+#    #+#             */
-/*   Updated: 2019/11/05 16:11:44 by alagache         ###   ########.fr       */
+/*   Updated: 2019/11/05 16:55:11 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ typedef struct	s_mlx
 	void		*img_ptr;
 	int			*img_data;
 	t_map		*map;
-	float		delta;
-	float		alpha;
-	float		sigma;
+	double		delta;
+	double		alpha;
+	double		sigma;
 	int			size_l;
 	int			endian;
 	int			bpp;

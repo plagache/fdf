@@ -6,13 +6,13 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:01:12 by plagache          #+#    #+#             */
-/*   Updated: 2019/11/05 16:11:43 by alagache         ###   ########.fr       */
+/*   Updated: 2019/11/05 16:22:18 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int		is_map(char *str)
+static int	is_map(char *str)
 {
 	int c;
 
@@ -26,7 +26,7 @@ int		is_map(char *str)
 	return (1);
 }
 
-int		list_to_array(t_map *map, t_list *head, int c)
+static int	list_to_array(t_map *map, t_list *head, int c)
 {
 	int		ret;
 	t_list	*ptr;
@@ -49,7 +49,7 @@ int		list_to_array(t_map *map, t_list *head, int c)
 	return (ret);
 }
 
-int		read_to_list(int fd, t_map *map, t_list *head)
+static int	read_to_list(int fd, t_map *map, t_list *head)
 {
 	char	*tmp;
 	int		c;
@@ -76,7 +76,7 @@ int		read_to_list(int fd, t_map *map, t_list *head)
 	return (0);
 }
 
-int		read_file(t_map *map, char *path)
+int			read_file(t_map *map, char *path)
 {
 	int		fd;
 	t_list	*head;

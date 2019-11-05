@@ -6,7 +6,7 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 12:40:12 by plagache          #+#    #+#             */
-/*   Updated: 2019/11/05 16:11:01 by alagache         ###   ########.fr       */
+/*   Updated: 2019/11/05 17:17:08 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static int	loop_ints(int fd)
 		c = 0;
 		while (line[c])
 		{
+			while (line[c] && (line[c] == ' ' || line[c] == '-'))
+				c++;
 			ret = 0;
 			if (ft_isdigit(line[c]) == 1 && (ret = check_ints(line + c)) == -1)
 			{
@@ -42,11 +44,10 @@ static int	loop_ints(int fd)
 				return (-1);
 			}
 			c += ret;
-			while (line[c] && line[c] == ' ')
-				c++;
 		}
 		free(line);
 	}
+	free(line);
 	return (0);
 }
 

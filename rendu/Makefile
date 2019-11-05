@@ -22,7 +22,7 @@ LIBA += $(MINILIB)/libmlx.a
 
 CC = clang
 
-CFLAGS= -Wall -Werror -Wextra -g -fsanitize=address,undefined
+CFLAGS= -Wall -Werror -Wextra
 
 LFLAGS= -framework OpenGL -framework AppKit 
 
@@ -30,10 +30,10 @@ HEAD = includes/fdf.h
 
 all: $(NAME)
 
-$(NAME): $(LIBA) $(OBJ)
+$(NAME): libft/libft.a $(OBJ)
 	$(MAKE) -C $(MINILIB) &> /dev/null
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBA) $(LFLAGS) 
-	echo "fdf build complete"
+	@echo "fdf build complete"
 
 $(LIBA): FORCE
 	$(MAKE) -C $(LIBDIR)
@@ -45,16 +45,15 @@ $(OBJ): %.o : %.c $(HEAD)
 
 clean:
 		$(RM) -R $(OBJ)
-		echo "fdf objects cleaned"
+		@echo "fdf objects cleaned"
 		$(MAKE) clean -C $(LIBDIR)
 		$(MAKE) clean -C $(MINILIB)
 
 fclean: clean
 		$(MAKE) fclean -s -C $(LIBDIR)
 		$(RM) $(NAME)
-		echo "fdf project cleaned"
+		@echo "fdf project cleaned"
 
 re: fclean all
 
 .PHONY: all clean fclean re FORCE
-.SILENT:

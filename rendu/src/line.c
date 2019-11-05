@@ -6,13 +6,13 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:00:52 by plagache          #+#    #+#             */
-/*   Updated: 2019/11/05 13:12:31 by plagache         ###   ########.fr       */
+/*   Updated: 2019/11/05 16:21:46 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int		*draw_line_low(int *data, t_point a, t_point b)
+static int	*draw_line_low(int *data, t_point a, t_point b)
 {
 	t_point	diff;
 	int		d;
@@ -41,7 +41,7 @@ int		*draw_line_low(int *data, t_point a, t_point b)
 	return (data);
 }
 
-int		*draw_line_high(int *data, t_point a, t_point b)
+static int	*draw_line_high(int *data, t_point a, t_point b)
 {
 	t_point	diff;
 	int		d;
@@ -70,7 +70,7 @@ int		*draw_line_high(int *data, t_point a, t_point b)
 	return (data);
 }
 
-void	which_line(int *data, t_point a, t_point b)
+void		which_line(int *data, t_point a, t_point b)
 {
 	if (abs(b.y - a.y) < abs(b.x - a.x))
 	{

@@ -6,13 +6,13 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 13:43:04 by plagache          #+#    #+#             */
-/*   Updated: 2019/11/04 16:46:56 by plagache         ###   ########.fr       */
+/*   Updated: 2019/11/05 16:54:00 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int		scale(t_map *map)
+static int	scale(t_map *map)
 {
 	int c;
 	int scale;
@@ -31,7 +31,7 @@ int		scale(t_map *map)
 	return (0);
 }
 
-int		*draw_line(int *data, t_map *map)
+static int	*draw_line(int *data, t_map *map)
 {
 	int	i;
 	int	j;
@@ -55,7 +55,7 @@ int		*draw_line(int *data, t_map *map)
 	return (data);
 }
 
-void	recenter(t_map *map)
+static void	recenter(t_map *map)
 {
 	int	c;
 
@@ -68,7 +68,7 @@ void	recenter(t_map *map)
 	}
 }
 
-void	draw_x(t_mlx *mlx, t_map *map)
+void		draw_x(t_mlx *mlx, t_map *map)
 {
 	mlx->img_ptr = mlx_new_image(mlx->init, IMG_WIDTH, IMG_HEIGHT);
 	mlx->img_data = (int*)mlx_get_data_addr(mlx->img_ptr, &mlx->bpp,

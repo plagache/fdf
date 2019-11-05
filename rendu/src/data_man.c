@@ -6,13 +6,13 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 17:18:32 by plagache          #+#    #+#             */
-/*   Updated: 2019/11/05 14:22:10 by plagache         ###   ########.fr       */
+/*   Updated: 2019/11/05 16:57:36 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int		alloc_tab(t_map *map, t_point *pt)
+static int	alloc_tab(t_map *map, t_point *pt)
 {
 	int	c;
 
@@ -41,14 +41,14 @@ int		alloc_tab(t_map *map, t_point *pt)
 	return (1);
 }
 
-int		ft_isnbr(char c)
+static int	ft_isnbr(char c)
 {
 	if (c == '-' || ft_isdigit(c) == 1)
 		return (1);
 	return (0);
 }
 
-void	fill_tabp(t_map *map, t_point *pt)
+static void	fill_tabp(t_map *map, t_point *pt)
 {
 	int c;
 
@@ -60,7 +60,7 @@ void	fill_tabp(t_map *map, t_point *pt)
 	}
 }
 
-void	fill_tab(t_map *map, t_point *pt)
+static void	fill_tab(t_map *map, t_point *pt)
 {
 	int	x;
 	int	y;
@@ -89,7 +89,7 @@ void	fill_tab(t_map *map, t_point *pt)
 	}
 }
 
-int		data_trans(t_map *map)
+int			data_trans(t_map *map)
 {
 	t_point	pt;
 
