@@ -6,7 +6,7 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:00:52 by plagache          #+#    #+#             */
-/*   Updated: 2019/11/04 17:45:06 by plagache         ###   ########.fr       */
+/*   Updated: 2019/11/05 13:12:31 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		*draw_line_low(int *data, t_point a, t_point b)
 	y = a.y;
 	while (a.x <= b.x)
 	{
-		if ((y * IMG_WIDTH + a.x) >= 0 
+		if ((y * IMG_WIDTH + a.x) >= 0
 				&& (y * IMG_WIDTH + a.x) < IMG_WIDTH * IMG_HEIGHT)
 			data[y * IMG_WIDTH + a.x] = 0x00FFFFFF;
 		if (d > 0)

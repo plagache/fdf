@@ -6,7 +6,7 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 16:51:26 by plagache          #+#    #+#             */
-/*   Updated: 2019/11/04 16:49:56 by plagache         ###   ########.fr       */
+/*   Updated: 2019/11/05 14:02:14 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,29 +36,6 @@ void	center_tab(t_map *map)
 	}
 }
 
-int		protect(char *path)
-{
-	int		fd;
-	char	buff[1];
-
-	if (ft_strnstr(path, "/dev", 4))
-		return (-1);
-	if (ft_strstr(path, ".fdf") == NULL)
-		return (-1);
-	fd = open(path, O_RDONLY);
-	if (fd < 0)
-	{
-		close(fd);
-		return (-1);
-	}
-	if (read(fd, buff, 1) < 0)
-	{
-		close(fd);
-		return (-1);
-	}
-	return (0);
-}
-
 int		main(int ac, char **av)
 {
 	t_mlx	mlx;
@@ -67,17 +44,17 @@ int		main(int ac, char **av)
 	if (ac != 2)
 	{
 		ft_putendl("usage : ./fdf path/to/map.fdf");
-		return (EXIT_FAILURE);
+		return (-1);
 	}
 	if (protect(av[1]) == -1 || read_file(&map, av[1]) == -1)
 	{
 		write(2, "error\n", 6);
-		return (EXIT_FAILURE);
+		return (-1);
 	}
 	get_mlx(&mlx, &map);
 	center_tab(&map);
 	draw_x(&mlx, &map);
 	mlx_loop(mlx.init);
 	clean_tab(&map);
-	return (EXIT_SUCCESS);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 17:18:32 by plagache          #+#    #+#             */
-/*   Updated: 2019/11/04 17:42:40 by plagache         ###   ########.fr       */
+/*   Updated: 2019/11/05 14:22:10 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	fill_tab(t_map *map, t_point *pt)
 	int c;
 
 	y = 0;
-	map->z_max = 2147483647;
+	map->z_max = 300;
 	while (y < pt->y)
 	{
 		x = 0;
@@ -77,7 +77,8 @@ void	fill_tab(t_map *map, t_point *pt)
 			(map->tab[(int)(y * pt->x + x)]).x = x;
 			(map->tab[(int)(y * pt->x + x)]).y = y;
 			(map->tab[(int)(y * pt->x + x)]).z = atoi(map->board[y] + c)
-				> map->z_max ? (atoi(map->board[y] + c) / 20) : atoi(map->board[y] + c);
+				> map->z_max
+				? map->z_max : atoi(map->board[y] + c);
 			while (map->board[y][c] && ft_isnbr(map->board[y][c]) == 1)
 				c++;
 			while (map->board[y][c] && ft_isnbr(map->board[y][c]) == 0)

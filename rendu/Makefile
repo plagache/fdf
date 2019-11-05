@@ -8,6 +8,7 @@ SRCS= src/main.c\
 	  src/rotate.c\
 	  src/line.c\
 	  src/clean.c\
+	  src/protect.c\
 
 OBJ= $(SRCS:.c=.o)
 
@@ -21,8 +22,7 @@ LIBA += $(MINILIB)/libmlx.a
 
 CC = clang
 
-CFLAGS= -Wall -Werror -Wextra 
-#-g -fsanitize=address,undefined
+CFLAGS= -Wall -Werror -Wextra -g -fsanitize=address,undefined
 
 LFLAGS= -framework OpenGL -framework AppKit 
 

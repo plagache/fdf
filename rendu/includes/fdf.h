@@ -6,7 +6,7 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 11:40:58 by plagache          #+#    #+#             */
-/*   Updated: 2019/11/04 16:16:13 by plagache         ###   ########.fr       */
+/*   Updated: 2019/11/05 14:36:22 by plagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,6 @@ void			rotate_x(t_map *map, double delta);
 void			rotate_y(t_map *map, double alpha);
 void			rotate_z(t_map *map, double sigma);
 void			draw_x(t_mlx *mlx, t_map *map);
+int				protect(char *path);
 
 #endif
