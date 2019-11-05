@@ -6,14 +6,13 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 12:40:12 by plagache          #+#    #+#             */
-/*   Updated: 2019/11/05 15:49:04 by alagache         ###   ########.fr       */
+/*   Updated: 2019/11/05 16:11:01 by alagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-
-int		check_ints(char *str)
+static int	check_ints(char *str)
 {
 	int	c;
 
@@ -25,7 +24,7 @@ int		check_ints(char *str)
 	return (c);
 }
 
-int		loop_ints(int fd)
+static int	loop_ints(int fd)
 {
 	int		ret;
 	int		c;
@@ -37,7 +36,7 @@ int		loop_ints(int fd)
 		while (line[c])
 		{
 			ret = 0;
-			if (ft_isdigit(line[c]) == 1 &&  (ret = check_ints(line + c)) == -1)
+			if (ft_isdigit(line[c]) == 1 && (ret = check_ints(line + c)) == -1)
 			{
 				free(line);
 				return (-1);
@@ -51,21 +50,22 @@ int		loop_ints(int fd)
 	return (0);
 }
 
-int		is_correct(char *str, int len)
+static int	is_correct(char *str, int len)
 {
 	int c;
 
 	c = 0;
 	while (c < len)
 	{
-		if (ft_isdigit(str[c]) != 1 && str[c] != ' ' && str[c] != '-' && str[c] != '\n')
+		if (ft_isdigit(str[c]) != 1 && str[c] != ' ' && str[c] != '-'
+				&& str[c] != '\n')
 			return (0);
 		c++;
 	}
 	return (1);
 }
 
-int		first_read(int fd)
+static int	first_read(int fd)
 {
 	char	buff[101];
 	int		ret;
@@ -79,7 +79,7 @@ int		first_read(int fd)
 	return (0);
 }
 
-int		protect(char *path)
+int			protect(char *path)
 {
 	int		fd;
 	char	buff[1];
@@ -98,7 +98,7 @@ int		protect(char *path)
 	if (loop_ints(fd) == -1)
 	{
 		close(fd);
-		return (-1);	
+		return (-1);
 	}
 	close(fd);
 	return (0);

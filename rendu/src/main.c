@@ -6,13 +6,13 @@
 /*   By: plagache <plagache@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 16:51:26 by plagache          #+#    #+#             */
-/*   Updated: 2019/11/05 14:02:14 by plagache         ###   ########.fr       */
+/*   Updated: 2019/11/05 16:09:55 by alagache         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	get_mlx(t_mlx *mlx, t_map *map)
+static void	get_mlx(t_mlx *mlx, t_map *map)
 {
 	mlx->init = mlx_init();
 	mlx->window = mlx_new_window(mlx->init, WIN_WIDTH, WIN_HEIGHT, "fdf");
@@ -23,7 +23,7 @@ void	get_mlx(t_mlx *mlx, t_map *map)
 	mlx_hook(mlx->window, 2, 0, &key_press, mlx);
 }
 
-void	center_tab(t_map *map)
+static void	center_tab(t_map *map)
 {
 	int c;
 
@@ -36,7 +36,7 @@ void	center_tab(t_map *map)
 	}
 }
 
-int		main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	t_mlx	mlx;
 	t_map	map;
